@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://p6m17rf31g1n"]
+
+[ext_resource type="Script" path="res://Scripts/Systems/BaseCard.cs" id="1_r1yrv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0trr"]
+albedo_color = Color(0.584314, 0.333333, 0.298039, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y4lep"]
+size = Vector3(1, 0.202637, 1.49463)
+
+[node name="Card" type="Node3D"]
+script = ExtResource("1_r1yrv")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(1, 0.2, 1.5)
+material = SubResource("StandardMaterial3D_d0trr")
+
+[node name="CardBody" type="StaticBody3D" parent="CSGBox3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/CardBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000244141, 0.00463867)
+shape = SubResource("BoxShape3D_y4lep")
