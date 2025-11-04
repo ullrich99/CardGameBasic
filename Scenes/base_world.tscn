@@ -1,20 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0u3uxp1vr8g3"]
+[gd_scene load_steps=4 format=3 uid="uid://c0u3uxp1vr8g3"]
 
+[ext_resource type="Script" path="res://Scripts/Systems/DragAndDropHandler.cs" id="1_j1cry"]
 [ext_resource type="PackedScene" uid="uid://p6m17rf31g1n" path="res://Prefabs/Cards/BaseCard.tscn" id="1_kmr3i"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ryfdo"]
+[ext_resource type="PackedScene" uid="uid://bdoqsue8px41v" path="res://Prefabs/groundPiece.tscn" id="2_sckr0"]
 
 [node name="BaseWorld" type="Node3D"]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
-
-[node name="Ground" type="StaticBody3D" parent="CSGBox3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/Ground"]
-shape = SubResource("BoxShape3D_ryfdo")
+script = ExtResource("1_j1cry")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.886946, 0.461872, 0, -0.461872, 0.886946, 0, 1.10995, 2.06641)
+transform = Transform3D(1, 0, 0, 0, 0.611527, 0.791223, 0, -0.791223, 0.611527, 0, 2.55, 1.541)
 
 [node name="Card" parent="." instance=ExtResource("1_kmr3i")]
+
+[node name="GroundPieces" type="Node" parent="."]
+
+[node name="GroundPiece" parent="GroundPieces" instance=ExtResource("2_sckr0")]
+
+[node name="GroundPiece2" parent="GroundPieces" instance=ExtResource("2_sckr0")]
+transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 2, 1.8, -0.6, 0)
+
+[node name="GroundPiece3" parent="GroundPieces" instance=ExtResource("2_sckr0")]
+transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 2, -1.8, -0.6, 0)
